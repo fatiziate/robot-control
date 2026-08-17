@@ -97,6 +97,7 @@ class RobotControlApp:
         self.root = root
         self.root.title("Robot Control Panel - eRobot 3Kg")
         self.root.attributes("-fullscreen", True)
+        self.root.attributes("-topmost", True) 
         
         # Passage automatique en plein écran / zoomé
         try:
