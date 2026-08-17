@@ -96,19 +96,14 @@ class RobotControlApp:
     def __init__(self, root):
         self.root = root
         self.root.title("Robot Control Panel - eRobot 3Kg")
+        self.root.overrideredirect(True)
+        self.root.update_idletasks()
+        sw = self.root.winfo_screenwidth()
+        sh = self.root.winfo_screenheight()
+        self.root.geometry(f"{sw}x{sh}+0+0")
         self.root.attributes("-fullscreen", True)
-        self.root.attributes("-topmost", True) 
-        
-        # Passage automatique en plein écran / zoomé
-        try:
-            self.root.state("zoomed")
-        except tk.TclError:
-            try:
-                self.root.attributes("-zoomed", True)
-            except tk.TclError:
-                pass
-                
-        self.root.overrideredirect(True) # Supprime la barre système supérieure pour l'intégration tactile
+        self.root.lift()
+        self.root.focus_force()
         self.root.bind("<Escape>", lambda e: self.root.destroy()) # Permet de quitter avec la touche Échap
         self.root.configure(bg="#f4f6f8")
 
